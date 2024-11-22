@@ -111,17 +111,19 @@ package object models {
     def remove(path: JsPath): JsResult[JsValue] = {
 
       (path.path, jsValue) match {
-        case (Nil, _) => JsError("path cannot be empty")
-        case ((n: KeyPathNode) :: Nil, value: JsObject) if value.keys.contains(n.key) => JsSuccess(value - n.key)
-        case ((n: KeyPathNode) :: Nil, value: JsObject) if !value.keys.contains(n.key) => JsError("cannot find value at path")
-        case ((n: IdxPathNode) :: Nil, value: JsArray) => removeIndexNode(n, value)
-        case ((_: KeyPathNode) :: Nil, _) => JsError(s"cannot remove a key on $jsValue")
+        case (Nil, _) =>
+          JsError("path cannot be empty")
+        case ((n: KeyPathNode) :: Nil, value: JsObject) if value.keys.contains(n.key) =>
+          JsSuccess(value - n.key)
+        case ((n: KeyPathNode) :: Nil, value: JsObject) if !value.keys.contains(n.key) =>
+          JsError("cannot find value at path")
+        case ((n: IdxPathNode) :: Nil, value: JsArray) =>
+          removeIndexNode(n, value)
+        case ((_: KeyPathNode) :: Nil, _) =>
+          JsError(s"cannot remove a key on $jsValue")
         case (first :: second :: rest, oldValue) =>
-
-          Reads.optionNoError(Reads.at[JsValue](JsPath(first :: Nil)))
-            .reads(oldValue).flatMap {
+          Reads.optionNoError(Reads.at[JsValue](JsPath(first :: Nil))).reads(oldValue).flatMap {
             (opt: Option[JsValue]) =>
-
               opt.map(JsSuccess(_)).getOrElse {
                 second match {
                   case _: KeyPathNode =>
@@ -138,6 +140,8 @@ package object models {
                 }
               }
           }
+        case _ =>
+          JsError("unexpected path and value")
       }
     }
   }
