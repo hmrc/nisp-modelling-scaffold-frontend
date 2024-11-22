@@ -1,26 +1,31 @@
 # microservice specific routes
 
-->          /hmrc-frontend                                hmrcfrontend.Routes
+->          /hmrc-frontend                                    hmrcfrontend.Routes
 
-GET         /                                             controllers.IndexController.onPageLoad()
+GET         /                                                 controllers.IndexController.onPageLoad()
 
-GET         /assets/*file                                 controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file                                     controllers.Assets.versioned(path="/public", file: Asset)
 
-GET         /language/:lang                               controllers.LanguageSwitchController.switchToLanguage(lang: String)
+GET         /language/:lang                                   controllers.LanguageSwitchController.switchToLanguage(lang: String)
 
-GET         /refresh-session                              controllers.KeepAliveController.keepAlive()
+GET         /refresh-session                                  controllers.KeepAliveController.keepAlive()
 
-GET         /there-is-a-problem                           controllers.JourneyRecoveryController.onPageLoad(continueUrl: Option[RedirectUrl] ?= None)
+GET         /there-is-a-problem                               controllers.JourneyRecoveryController.onPageLoad(continueUrl: Option[RedirectUrl] ?= None)
 
-GET         /check-your-answers                           controllers.CheckYourAnswersController.onPageLoad()
+GET         /check-your-answers                               controllers.CheckYourAnswersController.onPageLoad()
 
-GET         /account/sign-out-survey                      controllers.auth.AuthController.signOut()
-GET         /account/sign-out                             controllers.auth.AuthController.signOutNoSurvey()
-GET         /account/signed-out                           controllers.auth.SignedOutController.onPageLoad()
+GET         /account/sign-out-survey                          controllers.auth.AuthController.signOut()
+GET         /account/sign-out                                 controllers.auth.AuthController.signOutNoSurvey()
+GET         /account/signed-out                               controllers.auth.SignedOutController.onPageLoad()
 
-GET         /unauthorised                                 controllers.UnauthorisedController.onPageLoad()
+GET         /unauthorised                                     controllers.UnauthorisedController.onPageLoad()
 
-GET         /have-you-spoken-to-hmrc-or-dwp               controllers.HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadController.onPageLoad(mode: Mode = NormalMode)
-POST        /have-you-spoken-to-hmrc-or-dwp               controllers.HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadController.onSubmit(mode: Mode = NormalMode)
-GET         /change-have-you-spoken-to-hmrc-or-dwp        controllers.HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadController.onPageLoad(mode: Mode = CheckMode)
-POST        /change-have-you-spoken-to-hmrc-or-dwp        controllers.HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadController.onSubmit(mode: Mode = CheckMode)
+GET         /have-you-spoken-to-hmrc-or-dwp                   controllers.HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadController.onPageLoad(mode: Mode = NormalMode)
+POST        /have-you-spoken-to-hmrc-or-dwp                   controllers.HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadController.onSubmit(mode: Mode = NormalMode)
+GET         /change-have-you-spoken-to-hmrc-or-dwp            controllers.HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadController.onPageLoad(mode: Mode = CheckMode)
+POST        /change-have-you-spoken-to-hmrc-or-dwp            controllers.HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadController.onSubmit(mode: Mode = CheckMode)
+
+GET         /have-you-live-or-worked-outside-uk               controllers.LivedOrWorkedOutsideUkController.onPageLoad(mode: Mode = NormalMode)
+POST        /have-you-live-or-worked-outside-uk               controllers.LivedOrWorkedOutsideUkController.onSubmit(mode: Mode = NormalMode)
+GET         /change-have-you-live-or-worked-outside-uk        controllers.LivedOrWorkedOutsideUkController.onPageLoad(mode: Mode = CheckMode)
+POST        /change-have-you-live-or-worked-outside-uk        controllers.LivedOrWorkedOutsideUkController.onSubmit(mode: Mode = CheckMode)

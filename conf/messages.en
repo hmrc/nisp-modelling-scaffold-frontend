@@ -56,3 +56,9 @@ HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroad.heading = Have you spoke
 HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroad.checkYourAnswersLabel = HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroad
 HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroad.error.required = Select yes if you have spoken to someone in HMRC or DWP about self-employment or living or working outside the UK
 HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroad.change.hidden = Select yes if you have spoken to someone in HMRC or DWP about self-employment or living or working outside the UK
+
+livedOrWorkedOutsideUk.title = Have you lived or worked outside the UK in the last 18 years?
+livedOrWorkedOutsideUk.heading = Have you lived or worked outside the UK in the last 18 years?
+livedOrWorkedOutsideUk.checkYourAnswersLabel = livedOrWorkedOutsideUk
+livedOrWorkedOutsideUk.error.required =  Select yes if you lived abroad in the last 18 years
+livedOrWorkedOutsideUk.change.hidden =  Select yes if you lived abroad in the last 18 years
