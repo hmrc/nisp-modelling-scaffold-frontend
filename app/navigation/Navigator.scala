@@ -24,9 +24,10 @@ import pages._
 import models._
 
 @Singleton
-class Navigator @Inject()() {
+class Navigator @Inject() {
 
   private val normalRoutes: Page => UserAnswers => Call = {
+    case HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadPage => _ => routes.LivedOrWorkedOutsideUkController.onPageLoad(NormalMode)
     case _ => _ => routes.IndexController.onPageLoad()
   }
 
