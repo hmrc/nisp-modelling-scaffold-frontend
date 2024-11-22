@@ -38,7 +38,7 @@ class Navigator @Inject() {
   private def livingAbroad(answers: UserAnswers) = {
     answers.get(HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadPage).map {
       case true => routes.LivedOrWorkedOutsideUkController.onPageLoad(NormalMode)
-      case false => routes.JourneyRecoveryController.onPageLoad()
+      case false => routes.HaveYouBeenSelfEmployedInLast17YearsController.onPageLoad(NormalMode)
     }.getOrElse(routes.JourneyRecoveryController.onPageLoad())
 
   }

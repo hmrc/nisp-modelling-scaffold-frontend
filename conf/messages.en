@@ -62,3 +62,9 @@ livedOrWorkedOutsideUk.heading = Have you lived or worked outside the UK in the 
 livedOrWorkedOutsideUk.checkYourAnswersLabel = livedOrWorkedOutsideUk
 livedOrWorkedOutsideUk.error.required =  Select yes if you lived abroad in the last 18 years
 livedOrWorkedOutsideUk.change.hidden =  Select yes if you lived abroad in the last 18 years
+
+haveYouBeenSelfEmployedInLast17Years.title = Have you been self-employed in the last 18 years?
+haveYouBeenSelfEmployedInLast17Years.heading = Have you been self-employed in the last 18 years?
+haveYouBeenSelfEmployedInLast17Years.checkYourAnswersLabel = haveYouBeenSelfEmployedInLast17Years
+haveYouBeenSelfEmployedInLast17Years.error.required = Select yes if you have been self-employed in the last 18 years
+haveYouBeenSelfEmployedInLast17Years.change.hidden = Select yes if you have been self-employed in the last 18 years
