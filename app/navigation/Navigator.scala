@@ -27,12 +27,20 @@ import models._
 class Navigator @Inject() {
 
   private val normalRoutes: Page => UserAnswers => Call = {
-    case HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadPage => _ => routes.LivedOrWorkedOutsideUkController.onPageLoad(NormalMode)
+    case HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadPage => livingAbroad
     case _ => _ => routes.IndexController.onPageLoad()
   }
 
   private val checkRouteMap: Page => UserAnswers => Call = {
     case _ => _ => routes.CheckYourAnswersController.onPageLoad()
+  }
+
+  private def livingAbroad(answers: UserAnswers) = {
+    answers.get(HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadPage).map {
+      case true => routes.LivedOrWorkedOutsideUkController.onPageLoad(NormalMode)
+      case false => routes.JourneyRecoveryController.onPageLoad()
+    }.getOrElse(routes.JourneyRecoveryController.onPageLoad())
+
   }
 
   def nextPage(page: Page, mode: Mode, userAnswers: UserAnswers): Call = mode match {
