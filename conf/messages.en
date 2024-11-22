@@ -47,3 +47,12 @@ signedOut.guidance = We did not save your answers.
 
 unauthorised.title = You can’t access this service with this account
 unauthorised.heading = You can’t access this service with this account
+
+section.subheading = Check if you can pay for gaps online
+section.heading.checkPayGapsOnline.visually.hidden = This section is
+
+HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroad.title = Have you spoken to someone in HMRC or DWP about self-employment or living or working outside the UK?
+HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroad.heading = Have you spoken to someone in HMRC or DWP about self-employment or living or working outside the UK?
+HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroad.checkYourAnswersLabel = HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroad
+HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroad.error.required = Select yes if you have spoken to someone in HMRC or DWP about self-employment or living or working outside the UK
+HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroad.change.hidden = Select yes if you have spoken to someone in HMRC or DWP about self-employment or living or working outside the UK
