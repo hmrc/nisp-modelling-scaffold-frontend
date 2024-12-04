@@ -29,3 +29,8 @@ GET         /have-you-live-or-worked-outside-uk               controllers.LivedO
 POST        /have-you-live-or-worked-outside-uk               controllers.LivedOrWorkedOutsideUkController.onSubmit(mode: Mode = NormalMode)
 GET         /change-have-you-live-or-worked-outside-uk        controllers.LivedOrWorkedOutsideUkController.onPageLoad(mode: Mode = CheckMode)
 POST        /change-have-you-live-or-worked-outside-uk        controllers.LivedOrWorkedOutsideUkController.onSubmit(mode: Mode = CheckMode)
+
+GET        /haveYouBeenSelfEmployedInLast17Years                        controllers.HaveYouBeenSelfEmployedInLast17YearsController.onPageLoad(mode: Mode = NormalMode)
+POST       /haveYouBeenSelfEmployedInLast17Years                        controllers.HaveYouBeenSelfEmployedInLast17YearsController.onSubmit(mode: Mode = NormalMode)
+GET        /changeHaveYouBeenSelfEmployedInLast17Years                  controllers.HaveYouBeenSelfEmployedInLast17YearsController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeHaveYouBeenSelfEmployedInLast17Years                  controllers.HaveYouBeenSelfEmployedInLast17YearsController.onSubmit(mode: Mode = CheckMode)
