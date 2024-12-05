@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-package generators
+package pages
 
 import models.TimeSpentOutsideUk
-import org.scalacheck.{Arbitrary, Gen}
+import play.api.libs.json.JsPath
 
-trait ModelGenerators {
+case object TimeSpentOutsideUkPage extends QuestionPage[TimeSpentOutsideUk] {
 
-  implicit lazy val arbitraryTimeSpentOutsideUk: Arbitrary[TimeSpentOutsideUk] =
-    Arbitrary {
-      Gen.oneOf(TimeSpentOutsideUk.values)
-    }
+  override def path: JsPath = JsPath \ toString
+
+  override def toString: String = "timeSpentOutsideUk"
 }

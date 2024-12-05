@@ -14,15 +14,32 @@
  * limitations under the License.
  */
 
-package generators
+package forms
 
+import forms.behaviours.OptionFieldBehaviours
 import models.TimeSpentOutsideUk
-import org.scalacheck.{Arbitrary, Gen}
+import play.api.data.FormError
 
-trait ModelGenerators {
+class TimeSpentOutsideUkFormProviderSpec extends OptionFieldBehaviours {
 
-  implicit lazy val arbitraryTimeSpentOutsideUk: Arbitrary[TimeSpentOutsideUk] =
-    Arbitrary {
-      Gen.oneOf(TimeSpentOutsideUk.values)
-    }
+  val form = new TimeSpentOutsideUkFormProvider()()
+
+  ".value" - {
+
+    val fieldName = "value"
+    val requiredKey = "timeSpentOutsideUk.error.required"
+
+    behave like optionsField[TimeSpentOutsideUk](
+      form,
+      fieldName,
+      validValues  = TimeSpentOutsideUk.values,
+      invalidError = FormError(fieldName, "error.invalid")
+    )
+
+    behave like mandatoryField(
+      form,
+      fieldName,
+      requiredError = FormError(fieldName, requiredKey)
+    )
+  }
 }

@@ -9,15 +9,16 @@
 @(form: Form[_], mode: Mode)(implicit request: Request[_], messages: Messages)
 
 @layout(pageTitle = title(form, messages("$className;format="decap"$.title"))) {
+
+    @if(form.errors.nonEmpty) {
+        @govukErrorSummary(ErrorSummaryViewModel(form))
+    }
+
     <h2 id="journey-caption" class="govuk-caption-l hmrc-caption-l">
         <span class="govuk-visually-hidden">@messages("section.heading.checkPayGapsOnline.visually.hidden") </span>@messages("")
     </h2>
+
     @formHelper(action = routes.$className$Controller.onSubmit(mode), Symbol("autoComplete") -> "off") {
-
-        @if(form.errors.nonEmpty) {
-            @govukErrorSummary(ErrorSummaryViewModel(form))
-        }
-
         @govukRadios(
             RadiosViewModel.yesNo(
                 field = form("value"),

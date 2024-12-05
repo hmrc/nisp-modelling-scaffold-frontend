@@ -14,15 +14,18 @@
  * limitations under the License.
  */
 
-package generators
+package forms
 
+import javax.inject.Inject
+
+import forms.mappings.Mappings
+import play.api.data.Form
 import models.TimeSpentOutsideUk
-import org.scalacheck.{Arbitrary, Gen}
 
-trait ModelGenerators {
+class TimeSpentOutsideUkFormProvider @Inject() extends Mappings {
 
-  implicit lazy val arbitraryTimeSpentOutsideUk: Arbitrary[TimeSpentOutsideUk] =
-    Arbitrary {
-      Gen.oneOf(TimeSpentOutsideUk.values)
-    }
+  def apply(): Form[TimeSpentOutsideUk] =
+    Form(
+      "value" -> enumerable[TimeSpentOutsideUk]("timeSpentOutsideUk.error.required")
+    )
 }
