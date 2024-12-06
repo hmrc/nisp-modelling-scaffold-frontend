@@ -10,12 +10,15 @@
 
 @layout(pageTitle = title(form, messages("$className;format="decap"$.title"))) {
 
+    @if(form.errors.nonEmpty) {
+        @govukErrorSummary(ErrorSummaryViewModel(form,  errorLinkOverrides = Map("value" -> "value_0")))
+    }
+
+    <h2 id="journey-caption" class="govuk-caption-l hmrc-caption-l">
+        <span class="govuk-visually-hidden">@messages("section.heading.checkPayGapsOnline.visually.hidden") </span>@messages("section.subheading")
+    </h2>
+
     @formHelper(action = routes.$className$Controller.onSubmit(mode), Symbol("autoComplete") -> "off") {
-
-        @if(form.errors.nonEmpty) {
-            @govukErrorSummary(ErrorSummaryViewModel(form,  errorLinkOverrides = Map("value" -> "value_0")))
-        }
-
         @govukRadios(
             RadiosViewModel(
                 field  = form("value"),

@@ -68,3 +68,13 @@ haveYouBeenSelfEmployedInLast17Years.heading = Have you been self-employed in th
 haveYouBeenSelfEmployedInLast17Years.checkYourAnswersLabel = haveYouBeenSelfEmployedInLast17Years
 haveYouBeenSelfEmployedInLast17Years.error.required = Select yes if you have been self-employed in the last 18 years
 haveYouBeenSelfEmployedInLast17Years.change.hidden = Select yes if you have been self-employed in the last 18 years
+
+timeSpentOutsideUk.title = Time spent living or working outside the UK
+timeSpentOutsideUk.heading = Time spent living or working outside the UK
+timeSpentOutsideUk.yes = Yes
+timeSpentOutsideUk.no = No
+timeSpentOutsideUk.notKnown = Not known
+timeSpentOutsideUk.legend = Were you living or working outside the UK during any of these tax years?
+timeSpentOutsideUk.checkYourAnswersLabel = Time spent living or working outside the UK
+timeSpentOutsideUk.error.required = Select yes if you lived abroad during any of these tax years
+timeSpentOutsideUk.change.hidden = TimeSpentOutsideUk

@@ -28,20 +28,29 @@ class Navigator @Inject() {
 
   private val normalRoutes: Page => UserAnswers => Call = {
     case HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadPage => livingAbroad
-    case _ => _ => routes.IndexController.onPageLoad()
+    case TimeSpentOutsideUkPage                                      => timeSpentOutsideUk
+    case _ =>                                                      _ => routes.IndexController.onPageLoad()
   }
 
   private val checkRouteMap: Page => UserAnswers => Call = {
+    case HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadPage => _ => routes.CheckYourAnswersController.onPageLoad()
+    case TimeSpentOutsideUkPage                                      => _ => routes.CheckYourAnswersController.onPageLoad()
     case _ => _ => routes.CheckYourAnswersController.onPageLoad()
   }
 
-  private def livingAbroad(answers: UserAnswers) = {
+  private def livingAbroad(answers: UserAnswers): Call =
     answers.get(HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadPage).map {
       case true => routes.LivedOrWorkedOutsideUkController.onPageLoad(NormalMode)
       case false => routes.HaveYouBeenSelfEmployedInLast17YearsController.onPageLoad(NormalMode)
     }.getOrElse(routes.JourneyRecoveryController.onPageLoad())
 
-  }
+  private def timeSpentOutsideUk(answers: UserAnswers): Call =
+    answers.get(TimeSpentOutsideUkPage).map {
+      case TimeSpentOutsideUk.Yes => routes.JourneyRecoveryController.onPageLoad()
+      case TimeSpentOutsideUk.No => routes.JourneyRecoveryController.onPageLoad()
+      case TimeSpentOutsideUk.NotKnown => routes.JourneyRecoveryController.onPageLoad()
+    }.getOrElse(routes.JourneyRecoveryController.onPageLoad())
+
 
   def nextPage(page: Page, mode: Mode, userAnswers: UserAnswers): Call = mode match {
     case NormalMode =>
