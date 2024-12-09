@@ -14,20 +14,18 @@
  * limitations under the License.
  */
 
-package generators
+package forms
 
-import models.{PeriodsOfSelfEmployment, TimeSpentOutsideUk}
-import org.scalacheck.{Arbitrary, Gen}
+import javax.inject.Inject
 
-trait ModelGenerators {
+import forms.mappings.Mappings
+import play.api.data.Form
+import models.PeriodsOfSelfEmployment
 
-  implicit lazy val arbitraryPeriodsOfSelfEmployment: Arbitrary[PeriodsOfSelfEmployment] =
-    Arbitrary {
-      Gen.oneOf(PeriodsOfSelfEmployment.values)
-    }
+class PeriodsOfSelfEmploymentFormProvider @Inject() extends Mappings {
 
-  implicit lazy val arbitraryTimeSpentOutsideUk: Arbitrary[TimeSpentOutsideUk] =
-    Arbitrary {
-      Gen.oneOf(TimeSpentOutsideUk.values)
-    }
+  def apply(): Form[PeriodsOfSelfEmployment] =
+    Form(
+      "value" -> enumerable[PeriodsOfSelfEmployment]("periodsOfSelfEmployment.error.required")
+    )
 }

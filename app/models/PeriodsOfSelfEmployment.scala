@@ -20,26 +20,26 @@ import play.api.i18n.Messages
 import uk.gov.hmrc.govukfrontend.views.Aliases.Text
 import uk.gov.hmrc.govukfrontend.views.viewmodels.radios.RadioItem
 
-sealed trait TimeSpentOutsideUk
+sealed trait PeriodsOfSelfEmployment
 
-object TimeSpentOutsideUk extends Enumerable.Implicits {
+object PeriodsOfSelfEmployment extends Enumerable.Implicits {
 
-  case object Yes extends WithName("yes") with TimeSpentOutsideUk
-  case object No extends WithName("no") with TimeSpentOutsideUk
-  case object NotKnown extends WithName("notKnown") with TimeSpentOutsideUk
+  case object Yes extends WithName("yes") with PeriodsOfSelfEmployment
+  case object No extends WithName("no") with PeriodsOfSelfEmployment
+  case object NotKnown extends WithName("notKnown") with PeriodsOfSelfEmployment
 
-  val values: Seq[TimeSpentOutsideUk] =
+  val values: Seq[PeriodsOfSelfEmployment] =
     Seq(Yes, No, NotKnown)
 
   def options(implicit messages: Messages): Seq[RadioItem] = values.zipWithIndex.map {
     case (value, index) =>
       RadioItem(
-        content = Text(messages(s"timeSpentOutsideUk.${value.toString}")),
+        content = Text(messages(s"periodsOfSelfEmployment.${value.toString}")),
         value   = Some(value.toString),
         id      = Some(s"value_$index")
       )
   }
 
-  implicit val enumerable: Enumerable[TimeSpentOutsideUk] =
+  implicit val enumerable: Enumerable[PeriodsOfSelfEmployment] =
     Enumerable(values.map(v => v.toString -> v): _*)
 }

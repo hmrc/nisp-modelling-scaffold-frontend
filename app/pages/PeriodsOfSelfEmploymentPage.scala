@@ -14,20 +14,14 @@
  * limitations under the License.
  */
 
-package generators
+package pages
 
-import models.{PeriodsOfSelfEmployment, TimeSpentOutsideUk}
-import org.scalacheck.{Arbitrary, Gen}
+import models.PeriodsOfSelfEmployment
+import play.api.libs.json.JsPath
 
-trait ModelGenerators {
+case object PeriodsOfSelfEmploymentPage extends QuestionPage[PeriodsOfSelfEmployment] {
 
-  implicit lazy val arbitraryPeriodsOfSelfEmployment: Arbitrary[PeriodsOfSelfEmployment] =
-    Arbitrary {
-      Gen.oneOf(PeriodsOfSelfEmployment.values)
-    }
+  override def path: JsPath = JsPath \ toString
 
-  implicit lazy val arbitraryTimeSpentOutsideUk: Arbitrary[TimeSpentOutsideUk] =
-    Arbitrary {
-      Gen.oneOf(TimeSpentOutsideUk.values)
-    }
+  override def toString: String = "periodsOfSelfEmployment"
 }

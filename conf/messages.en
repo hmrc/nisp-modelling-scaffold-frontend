@@ -78,3 +78,13 @@ timeSpentOutsideUk.legend = Were you living or working outside the UK during any
 timeSpentOutsideUk.checkYourAnswersLabel = Time spent living or working outside the UK
 timeSpentOutsideUk.error.required = Select yes if you lived abroad during any of these tax years
 timeSpentOutsideUk.change.hidden = TimeSpentOutsideUk
+
+periodsOfSelfEmployment.title = Periods of self-employment
+periodsOfSelfEmployment.heading = Periods of self-employment
+periodsOfSelfEmployment.yes = Yes
+periodsOfSelfEmployment.no = No
+periodsOfSelfEmployment.notKnown = Not Known
+periodsOfSelfEmployment.legend = Were you self-employed during any of these tax years?
+periodsOfSelfEmployment.checkYourAnswersLabel = Periods of self-employment
+periodsOfSelfEmployment.error.required = Select yes if you were self-employed during any of these tax years
+periodsOfSelfEmployment.change.hidden = PeriodsOfSelfEmployment
