@@ -16,10 +16,15 @@
 
 package generators
 
-import models.{PeriodsOfSelfEmployment, TimeSpentOutsideUk}
+import models.{NationalInsuranceContributions, PeriodsOfSelfEmployment, TimeSpentOutsideUk}
 import org.scalacheck.{Arbitrary, Gen}
 
 trait ModelGenerators {
+
+  implicit lazy val arbitraryNationalInsuranceContributions: Arbitrary[NationalInsuranceContributions] =
+    Arbitrary {
+      Gen.oneOf(NationalInsuranceContributions.values)
+    }
 
   implicit lazy val arbitraryPeriodsOfSelfEmployment: Arbitrary[PeriodsOfSelfEmployment] =
     Arbitrary {

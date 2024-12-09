@@ -30,14 +30,37 @@ class Navigator @Inject() {
     case HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadPage => haveYouSpoken
     case TimeSpentOutsideUkPage                                      => timeSpentOutsideUk
     case HaveYouBeenSelfEmployedInLast17YearsPage                    => selfEmployed
+    case LivedOrWorkedOutsideUkPage                                  => livedOrWorkedOutsideUk
+    case NationalInsuranceContributionsPage                          => nationalInsuranceContributions
     case _ =>                                                      _ => routes.IndexController.onPageLoad()
   }
 
   private val checkRouteMap: Page => UserAnswers => Call = {
     case HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadPage => _ => routes.CheckYourAnswersController.onPageLoad()
     case TimeSpentOutsideUkPage                                      => _ => routes.CheckYourAnswersController.onPageLoad()
+    case HaveYouBeenSelfEmployedInLast17YearsPage                    => _ => routes.CheckYourAnswersController.onPageLoad()
+    case LivedOrWorkedOutsideUkPage                                  => _ => routes.CheckYourAnswersController.onPageLoad()
+    case NationalInsuranceContributionsPage                          => _ => routes.CheckYourAnswersController.onPageLoad()
     case _ => _ => routes.CheckYourAnswersController.onPageLoad()
   }
+
+  private def nationalInsuranceContributions(answers: UserAnswers): Call =
+    answers.get(NationalInsuranceContributionsPage).map {
+      case NationalInsuranceContributions.Beforestatepensionage =>
+        routes.JourneyRecoveryController.onPageLoad()
+      case NationalInsuranceContributions.Reachstatepensionage =>
+        routes.JourneyRecoveryController.onPageLoad()
+      case NationalInsuranceContributions.AlreadyStoppedPaying =>
+        routes.JourneyRecoveryController.onPageLoad()
+      case NationalInsuranceContributions.StoppedGettingCredits =>
+        routes.JourneyRecoveryController.onPageLoad()
+    }.getOrElse(routes.JourneyRecoveryController.onPageLoad())
+
+  private def livedOrWorkedOutsideUk(answers: UserAnswers): Call =
+    answers.get(LivedOrWorkedOutsideUkPage).map {
+      case true => routes.TimeSpentOutsideUkController.onPageLoad(NormalMode)
+      case false => routes.NationalInsuranceContributionsController.onPageLoad(NormalMode)
+    }.getOrElse(routes.JourneyRecoveryController.onPageLoad())
 
   private def haveYouSpoken(answers: UserAnswers): Call =
     answers.get(HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadPage).map {
@@ -54,7 +77,7 @@ class Navigator @Inject() {
   private def timeSpentOutsideUk(answers: UserAnswers): Call =
     answers.get(TimeSpentOutsideUkPage).map {
       case TimeSpentOutsideUk.Yes => routes.PeriodsOfSelfEmploymentController.onPageLoad(NormalMode)
-      case TimeSpentOutsideUk.No => routes.LivedOrWorkedOutsideUkController.onPageLoad(NormalMode)
+      case TimeSpentOutsideUk.No => routes.NationalInsuranceContributionsController.onPageLoad(NormalMode)
       case TimeSpentOutsideUk.NotKnown => routes.JourneyRecoveryController.onPageLoad()
     }.getOrElse(routes.JourneyRecoveryController.onPageLoad())
 

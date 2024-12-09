@@ -44,3 +44,8 @@ GET         /periods-of-self-employment                       controllers.Period
 POST        /periods-of-self-employment                       controllers.PeriodsOfSelfEmploymentController.onSubmit(mode: Mode = NormalMode)
 GET         /change-periods-of-self-employment                controllers.PeriodsOfSelfEmploymentController.onPageLoad(mode: Mode = CheckMode)
 POST        /change-periods-of-self-employment                controllers.PeriodsOfSelfEmploymentController.onSubmit(mode: Mode = CheckMode)
+
+GET         /national-insurance-contributions                 controllers.NationalInsuranceContributionsController.onPageLoad(mode: Mode = NormalMode)
+POST        /national-insurance-contributions                 controllers.NationalInsuranceContributionsController.onSubmit(mode: Mode = NormalMode)
+GET         /change-national-insurance-contributions          controllers.NationalInsuranceContributionsController.onPageLoad(mode: Mode = CheckMode)
+POST        /change-national-insurance-contributions          controllers.NationalInsuranceContributionsController.onSubmit(mode: Mode = CheckMode)
