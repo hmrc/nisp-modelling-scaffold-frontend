@@ -27,8 +27,9 @@ import models._
 class Navigator @Inject() {
 
   private val normalRoutes: Page => UserAnswers => Call = {
-    case HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadPage => livingAbroad
+    case HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadPage => haveYouSpoken
     case TimeSpentOutsideUkPage                                      => timeSpentOutsideUk
+    case HaveYouBeenSelfEmployedInLast17YearsPage                    => selfEmployed
     case _ =>                                                      _ => routes.IndexController.onPageLoad()
   }
 
@@ -38,16 +39,22 @@ class Navigator @Inject() {
     case _ => _ => routes.CheckYourAnswersController.onPageLoad()
   }
 
-  private def livingAbroad(answers: UserAnswers): Call =
+  private def haveYouSpoken(answers: UserAnswers): Call =
     answers.get(HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadPage).map {
       case true => routes.LivedOrWorkedOutsideUkController.onPageLoad(NormalMode)
       case false => routes.HaveYouBeenSelfEmployedInLast17YearsController.onPageLoad(NormalMode)
     }.getOrElse(routes.JourneyRecoveryController.onPageLoad())
 
+  private def selfEmployed(answers: UserAnswers): Call =
+    answers.get(HaveYouBeenSelfEmployedInLast17YearsPage).map {
+      case true => routes.PeriodsOfSelfEmploymentController.onPageLoad(NormalMode)
+      case false => routes.LivedOrWorkedOutsideUkController.onPageLoad(NormalMode)
+    }.getOrElse(routes.JourneyRecoveryController.onPageLoad())
+
   private def timeSpentOutsideUk(answers: UserAnswers): Call =
     answers.get(TimeSpentOutsideUkPage).map {
-      case TimeSpentOutsideUk.Yes => routes.JourneyRecoveryController.onPageLoad()
-      case TimeSpentOutsideUk.No => routes.JourneyRecoveryController.onPageLoad()
+      case TimeSpentOutsideUk.Yes => routes.PeriodsOfSelfEmploymentController.onPageLoad(NormalMode)
+      case TimeSpentOutsideUk.No => routes.LivedOrWorkedOutsideUkController.onPageLoad(NormalMode)
       case TimeSpentOutsideUk.NotKnown => routes.JourneyRecoveryController.onPageLoad()
     }.getOrElse(routes.JourneyRecoveryController.onPageLoad())
 

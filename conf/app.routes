@@ -39,3 +39,8 @@ GET         /time-spent-outside-uk                            controllers.TimeSp
 POST        /time-spent-outside-uk                            controllers.TimeSpentOutsideUkController.onSubmit(mode: Mode = NormalMode)
 GET         /change-time-spent-outside-uk                     controllers.TimeSpentOutsideUkController.onPageLoad(mode: Mode = CheckMode)
 POST        /change-time-spent-outside-uk                     controllers.TimeSpentOutsideUkController.onSubmit(mode: Mode = CheckMode)
+
+GET         /periods-of-self-employment                       controllers.PeriodsOfSelfEmploymentController.onPageLoad(mode: Mode = NormalMode)
+POST        /periods-of-self-employment                       controllers.PeriodsOfSelfEmploymentController.onSubmit(mode: Mode = NormalMode)
+GET         /change-periods-of-self-employment                controllers.PeriodsOfSelfEmploymentController.onPageLoad(mode: Mode = CheckMode)
+POST        /change-periods-of-self-employment                controllers.PeriodsOfSelfEmploymentController.onSubmit(mode: Mode = CheckMode)
