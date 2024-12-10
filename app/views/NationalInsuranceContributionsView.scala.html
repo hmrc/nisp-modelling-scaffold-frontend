@@ -29,28 +29,27 @@
 
 @(form: Form[_], mode: Mode)(implicit request: Request[_], messages: Messages)
 
-@layout(pageTitle = title(form, messages("livedOrWorkedOutsideUk.title"))) {
+@layout(pageTitle = title(form, messages("nationalInsuranceContributions.title"))) {
 
-    <h2 id="journey-caption" class="govuk-caption-l hmrc-caption-l">
-        <span class="govuk-visually-hidden">@messages("section.heading.checkPayGapsOnline.visually.hidden") </span>
-        @messages("section.subheading")
-    </h2>
+    @if(form.errors.nonEmpty) {
+        @govukErrorSummary(ErrorSummaryViewModel(form, errorLinkOverrides = Map("value" -> "value_0")))
+    }
 
-    @formHelper(action = routes.LivedOrWorkedOutsideUkController.onSubmit(mode), Symbol("autoComplete") -> "off") {
+    <h1 class="govuk-heading-l">@messages("nationalInsuranceContributions.heading")</h1>
 
-        @if(form.errors.nonEmpty) {
-            @govukErrorSummary(ErrorSummaryViewModel(form))
-        }
+    <p class="govuk-body">@messages("nationalInsuranceContributions.p1")</p>
 
+    @formHelper(action = routes.NationalInsuranceContributionsController.onSubmit(mode), Symbol("autoComplete") -> "off") {
         @govukRadios(
-            RadiosViewModel.yesNo(
-                field = form("value"),
-                legend = LegendViewModel(Text(messages("livedOrWorkedOutsideUk.heading"))).asPageHeading()
+            RadiosViewModel(
+                field  = form("value"),
+                legend = LegendViewModel(Text(messages("nationalInsuranceContributions.legend"))).withCssClass("govuk-fieldset__legend--m"),
+                items  = NationalInsuranceContributions.options
             )
         )
 
         @govukButton(
-            ButtonViewModel(Text(messages("site.continue")))
+            ButtonViewModel(Text(messages("site.continueToOptions")))
         )
     }
 }

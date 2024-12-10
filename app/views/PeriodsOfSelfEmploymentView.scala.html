@@ -14,6 +14,11 @@
  * limitations under the License.
  *@
 
+@import uk.gov.hmrc.govukfrontend.views.html.components.{GovukButton, GovukRadios, GovukErrorSummary, FormWithCSRF}
+@import viewmodels.govuk.all.{RadiosViewModel, LegendViewModel, ErrorSummaryViewModel, ButtonViewModel, FluentLegend}
+@import uk.gov.hmrc.govukfrontend.views.Aliases.Text
+@import views.ViewUtils.title
+
 @this(
     layout: templates.Layout,
     formHelper: FormWithCSRF,
@@ -40,13 +45,13 @@
         @govukRadios(
             RadiosViewModel(
                 field  = form("value"),
-                legend = LegendViewModel(messages("periodsOfSelfEmployment.legend")).withCssClass("govuk-fieldset__legend--m"),
+                legend = LegendViewModel(Text(messages("periodsOfSelfEmployment.legend"))).withCssClass("govuk-fieldset__legend--m"),
                 items  = PeriodsOfSelfEmployment.options
             )
         )
 
         @govukButton(
-            ButtonViewModel(messages("site.continue"))
+            ButtonViewModel(Text(messages("site.continue")))
         )
     }
 }
