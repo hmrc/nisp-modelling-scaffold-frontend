@@ -101,3 +101,13 @@ nationalInsuranceContributions.stoppedGettingCredits = I have already stopped ge
 nationalInsuranceContributions.checkYourAnswersLabel = National Insurance contributions
 nationalInsuranceContributions.error.required = Select when you intend to stop paying National Insurance or getting National Insurance credits
 nationalInsuranceContributions.change.hidden = NationalInsuranceContributions
+
+whenWillYouStopPayingNationalInsurance.title = WhenWillYouStopPayingNationalInsurance
+whenWillYouStopPayingNationalInsurance.heading = WhenWillYouStopPayingNationalInsurance
+whenWillYouStopPayingNationalInsurance.hint = For example, 12 11 2007.
+whenWillYouStopPayingNationalInsurance.checkYourAnswersLabel = WhenWillYouStopPayingNationalInsurance
+whenWillYouStopPayingNationalInsurance.error.required.all = Enter the whenWillYouStopPayingNationalInsurance
+whenWillYouStopPayingNationalInsurance.error.required.two = The whenWillYouStopPayingNationalInsurance must include {0} and {1}
+whenWillYouStopPayingNationalInsurance.error.required = The whenWillYouStopPayingNationalInsurance must include {0}
+whenWillYouStopPayingNationalInsurance.error.invalid = Enter a real WhenWillYouStopPayingNationalInsurance
+whenWillYouStopPayingNationalInsurance.change.hidden = WhenWillYouStopPayingNationalInsurance

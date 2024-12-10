@@ -1,51 +1,56 @@
 # microservice specific routes
 
-->          /hmrc-frontend                                    hmrcfrontend.Routes
+->          /hmrc-frontend                                              hmrcfrontend.Routes
 
-GET         /                                                 controllers.IndexController.onPageLoad()
+GET         /                                                           controllers.IndexController.onPageLoad()
 
-GET         /assets/*file                                     controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file                                               controllers.Assets.versioned(path="/public", file: Asset)
 
-GET         /language/:lang                                   controllers.LanguageSwitchController.switchToLanguage(lang: String)
+GET         /language/:lang                                             controllers.LanguageSwitchController.switchToLanguage(lang: String)
 
-GET         /refresh-session                                  controllers.KeepAliveController.keepAlive()
+GET         /refresh-session                                            controllers.KeepAliveController.keepAlive()
 
-GET         /there-is-a-problem                               controllers.JourneyRecoveryController.onPageLoad(continueUrl: Option[RedirectUrl] ?= None)
+GET         /there-is-a-problem                                         controllers.JourneyRecoveryController.onPageLoad(continueUrl: Option[RedirectUrl] ?= None)
 
-GET         /check-your-answers                               controllers.CheckYourAnswersController.onPageLoad()
+GET         /check-your-answers                                         controllers.CheckYourAnswersController.onPageLoad()
 
-GET         /account/sign-out-survey                          controllers.auth.AuthController.signOut()
-GET         /account/sign-out                                 controllers.auth.AuthController.signOutNoSurvey()
-GET         /account/signed-out                               controllers.auth.SignedOutController.onPageLoad()
+GET         /account/sign-out-survey                                    controllers.auth.AuthController.signOut()
+GET         /account/sign-out                                           controllers.auth.AuthController.signOutNoSurvey()
+GET         /account/signed-out                                         controllers.auth.SignedOutController.onPageLoad()
 
-GET         /unauthorised                                     controllers.UnauthorisedController.onPageLoad()
+GET         /unauthorised                                               controllers.UnauthorisedController.onPageLoad()
 
-GET         /have-you-spoken-to-hmrc-or-dwp                   controllers.HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadController.onPageLoad(mode: Mode = NormalMode)
-POST        /have-you-spoken-to-hmrc-or-dwp                   controllers.HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadController.onSubmit(mode: Mode = NormalMode)
-GET         /change-have-you-spoken-to-hmrc-or-dwp            controllers.HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadController.onPageLoad(mode: Mode = CheckMode)
-POST        /change-have-you-spoken-to-hmrc-or-dwp            controllers.HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadController.onSubmit(mode: Mode = CheckMode)
+GET         /have-you-spoken-to-hmrc-or-dwp                             controllers.HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadController.onPageLoad(mode: Mode = NormalMode)
+POST        /have-you-spoken-to-hmrc-or-dwp                             controllers.HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadController.onSubmit(mode: Mode = NormalMode)
+GET         /change-have-you-spoken-to-hmrc-or-dwp                      controllers.HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadController.onPageLoad(mode: Mode = CheckMode)
+POST        /change-have-you-spoken-to-hmrc-or-dwp                      controllers.HaveYouSpokenToSomeoneAboutSelfEmploymentOrLivingAbroadController.onSubmit(mode: Mode = CheckMode)
 
-GET         /have-you-live-or-worked-outside-uk               controllers.LivedOrWorkedOutsideUkController.onPageLoad(mode: Mode = NormalMode)
-POST        /have-you-live-or-worked-outside-uk               controllers.LivedOrWorkedOutsideUkController.onSubmit(mode: Mode = NormalMode)
-GET         /change-have-you-live-or-worked-outside-uk        controllers.LivedOrWorkedOutsideUkController.onPageLoad(mode: Mode = CheckMode)
-POST        /change-have-you-live-or-worked-outside-uk        controllers.LivedOrWorkedOutsideUkController.onSubmit(mode: Mode = CheckMode)
+GET         /have-you-live-or-worked-outside-uk                         controllers.LivedOrWorkedOutsideUkController.onPageLoad(mode: Mode = NormalMode)
+POST        /have-you-live-or-worked-outside-uk                         controllers.LivedOrWorkedOutsideUkController.onSubmit(mode: Mode = NormalMode)
+GET         /change-have-you-live-or-worked-outside-uk                  controllers.LivedOrWorkedOutsideUkController.onPageLoad(mode: Mode = CheckMode)
+POST        /change-have-you-live-or-worked-outside-uk                  controllers.LivedOrWorkedOutsideUkController.onSubmit(mode: Mode = CheckMode)
 
-GET         /have-you-been-self-employed                      controllers.HaveYouBeenSelfEmployedInLast17YearsController.onPageLoad(mode: Mode = NormalMode)
-POST        /have-you-been-self-employed                      controllers.HaveYouBeenSelfEmployedInLast17YearsController.onSubmit(mode: Mode = NormalMode)
-GET         /change-have-you-been-self-employed               controllers.HaveYouBeenSelfEmployedInLast17YearsController.onPageLoad(mode: Mode = CheckMode)
-POST        /change-have-you-been-self-employed               controllers.HaveYouBeenSelfEmployedInLast17YearsController.onSubmit(mode: Mode = CheckMode)
+GET         /have-you-been-self-employed                                controllers.HaveYouBeenSelfEmployedInLast17YearsController.onPageLoad(mode: Mode = NormalMode)
+POST        /have-you-been-self-employed                                controllers.HaveYouBeenSelfEmployedInLast17YearsController.onSubmit(mode: Mode = NormalMode)
+GET         /change-have-you-been-self-employed                         controllers.HaveYouBeenSelfEmployedInLast17YearsController.onPageLoad(mode: Mode = CheckMode)
+POST        /change-have-you-been-self-employed                         controllers.HaveYouBeenSelfEmployedInLast17YearsController.onSubmit(mode: Mode = CheckMode)
 
-GET         /time-spent-outside-uk                            controllers.TimeSpentOutsideUkController.onPageLoad(mode: Mode = NormalMode)
-POST        /time-spent-outside-uk                            controllers.TimeSpentOutsideUkController.onSubmit(mode: Mode = NormalMode)
-GET         /change-time-spent-outside-uk                     controllers.TimeSpentOutsideUkController.onPageLoad(mode: Mode = CheckMode)
-POST        /change-time-spent-outside-uk                     controllers.TimeSpentOutsideUkController.onSubmit(mode: Mode = CheckMode)
+GET         /time-spent-outside-uk                                      controllers.TimeSpentOutsideUkController.onPageLoad(mode: Mode = NormalMode)
+POST        /time-spent-outside-uk                                      controllers.TimeSpentOutsideUkController.onSubmit(mode: Mode = NormalMode)
+GET         /change-time-spent-outside-uk                               controllers.TimeSpentOutsideUkController.onPageLoad(mode: Mode = CheckMode)
+POST        /change-time-spent-outside-uk                               controllers.TimeSpentOutsideUkController.onSubmit(mode: Mode = CheckMode)
 
-GET         /periods-of-self-employment                       controllers.PeriodsOfSelfEmploymentController.onPageLoad(mode: Mode = NormalMode)
-POST        /periods-of-self-employment                       controllers.PeriodsOfSelfEmploymentController.onSubmit(mode: Mode = NormalMode)
-GET         /change-periods-of-self-employment                controllers.PeriodsOfSelfEmploymentController.onPageLoad(mode: Mode = CheckMode)
-POST        /change-periods-of-self-employment                controllers.PeriodsOfSelfEmploymentController.onSubmit(mode: Mode = CheckMode)
+GET         /periods-of-self-employment                                 controllers.PeriodsOfSelfEmploymentController.onPageLoad(mode: Mode = NormalMode)
+POST        /periods-of-self-employment                                 controllers.PeriodsOfSelfEmploymentController.onSubmit(mode: Mode = NormalMode)
+GET         /change-periods-of-self-employment                          controllers.PeriodsOfSelfEmploymentController.onPageLoad(mode: Mode = CheckMode)
+POST        /change-periods-of-self-employment                          controllers.PeriodsOfSelfEmploymentController.onSubmit(mode: Mode = CheckMode)
 
-GET         /national-insurance-contributions                 controllers.NationalInsuranceContributionsController.onPageLoad(mode: Mode = NormalMode)
-POST        /national-insurance-contributions                 controllers.NationalInsuranceContributionsController.onSubmit(mode: Mode = NormalMode)
-GET         /change-national-insurance-contributions          controllers.NationalInsuranceContributionsController.onPageLoad(mode: Mode = CheckMode)
-POST        /change-national-insurance-contributions          controllers.NationalInsuranceContributionsController.onSubmit(mode: Mode = CheckMode)
+GET         /national-insurance-contributions                           controllers.NationalInsuranceContributionsController.onPageLoad(mode: Mode = NormalMode)
+POST        /national-insurance-contributions                           controllers.NationalInsuranceContributionsController.onSubmit(mode: Mode = NormalMode)
+GET         /change-national-insurance-contributions                    controllers.NationalInsuranceContributionsController.onPageLoad(mode: Mode = CheckMode)
+POST        /change-national-insurance-contributions                    controllers.NationalInsuranceContributionsController.onSubmit(mode: Mode = CheckMode)
+
+GET         /when-will-you-stop-paying-national-insurance               controllers.WhenWillYouStopPayingNationalInsuranceController.onPageLoad(mode: Mode = NormalMode)
+POST        /when-will-you-stop-paying-national-insurance               controllers.WhenWillYouStopPayingNationalInsuranceController.onSubmit(mode: Mode = NormalMode)
+GET         /change-when-will-you-stop-paying-national-insurance        controllers.WhenWillYouStopPayingNationalInsuranceController.onPageLoad(mode: Mode = CheckMode)
+POST        /change-when-will-you-stop-paying-national-insurance        controllers.WhenWillYouStopPayingNationalInsuranceController.onSubmit(mode: Mode = CheckMode)
